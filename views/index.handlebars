@@ -1,38 +1,14 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-12 text-center">
-			<img src="/css/burger.png"/>
-		</div>
-	</div>
-
-	<div class="row">
 		<div class="col-md-6">
-			<ul class="list-group">
-				{{#each burgersToEat}}
-					{{> readyToEat }}	
-				{{/each}}
-			</ul>
+			<h1>Login</h1>
+			<input type="text" class="form-control" placeholder="test password">
+			<button class="btn btn-primary" id="login">Login</button>
 		</div>
-		<div class="col-md-6 text-center">
-			<ul class="list-group">
-				{{#each burgersEaten}}
-					{{> devoured }}		
-				{{/each}}
-			</ul>
-		</div>
-	</div>
-	<hr>
-	<div class="row">
-		<div class="col-md-4 text-center">
-
-		</div>
-		<div class="col-md-4 text-center">
-			<h4>Enter in a new burger!</h4>
-			<textarea class="form-control" id="newBurger" rows="3"></textarea>
-			<button type="button" class="btn btn-primary btn-lg btn-block" id="submit">Submit</button>
-		</div>
-		<div class="col-md-4 text-center">
-	
+		<div class="col-md-6">
+			<h1>Register</h1>
+			<input type="text" class="form-control" id="register-password" placeholder="test password">
+			<button class="btn btn-primary" id="register">Register</button>
 		</div>
 	</div>
 </div>

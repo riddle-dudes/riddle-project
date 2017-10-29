@@ -1,4 +1,28 @@
-$(document).on("click", ".devour", function(event)
+$('#register').on("click", function(event)
+{
+	console.log($('#register-password').val())
+
+	var data = 
+	{
+		password: $('#register-password').val()
+	}
+
+	$.ajax(
+	{
+		url: '/register',
+		type: 'post',
+		data: data
+	}).then(function(result)
+	{
+		console.log(result)
+	})
+})
+
+
+
+
+
+/*$(document).on("click", ".devour", function(event)
 {
 	var ID = $(this).attr("id");
 	console.log(ID)
@@ -35,4 +59,4 @@ $('#submit').on('click', function(event)
 	{
 		window.location.reload()
 	})
-})
+})*/
