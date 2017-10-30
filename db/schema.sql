@@ -16,7 +16,7 @@ primary key(id)
 
 CREATE TABLE riddles (
 id INT(50) auto_increment not null,
-text VARCHAR(255) not null,
+text VARCHAR(1255) not null,
 answer VARCHAR(255) not null,
 level INT(50) not null,
 primary key(id)
