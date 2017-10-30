@@ -10,6 +10,9 @@ router.get("/", function(req, res)
 	res.render("index");
 });
 
+router.get("/hub", function(req, res) {
+	res.render("hub");
+});
 
 router.post('/register', function(req, res)
 {
