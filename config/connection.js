@@ -1,29 +1,12 @@
 var mysql = require("mysql");
 var connection = mysql.createConnection(
 {
-	host: "otmaa16c1i9nwrek.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-	user: "aqlmqbpyrbwx9fud",
-	password: "aiexiw6aq63h68tm",
-	database: "bqzftpqzzcha0u20"
+	host: "localhost",
+	user: "root",
+	password: "password",
+	database: "game",
+	port: 3306
 });
-
-/*if (process.env.JawsDB_URL)
-{
-	connection = mysql.createConnection(process.env.JAWSDB_URL);
-}
-
-else
-{
-	connection = mysql.createConnection(
-	{
-		host: "localhost",
-		port: 3306,
-
-		user: 'root',
-		password: 'Lukkehoday1',
-		database: "burgers_db"
-	});
-};*/
 
 connection.connect(function(err)
 {
