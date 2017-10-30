@@ -12,9 +12,9 @@ var orm =
 		});
 	},
 
-	insertOne: function(table, burger_name, cb)
+	create: function(table, name, email, password, cb)
 	{
-		connection.query('INSERT INTO '+table+'(burger_name, devoured) VALUES (?, false);', [burger_name], function(err, result)
+		connection.query('INSERT INTO '+table+'(name, email, password, level, coins) VALUES (?, ?, ?, 1, 500);', [name, email, password], function(err, result)
 		{
 			if (err){throw err};
 			cb(result);

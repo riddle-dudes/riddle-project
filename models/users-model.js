@@ -1,6 +1,6 @@
 var orm = require("../config/orm.js");
 
-var burger =
+var user =
 {
 	all: function(cb)
 	{
@@ -10,9 +10,9 @@ var burger =
 		});
 	},
 
-	insert: function(name, cb)
+	createUser: function(name, email, password, cb)
 	{
-		orm.insertOne("burgers", name, function(result)
+		orm.create("users", name, email, password, function(result)
 		{
 			cb(result)
 		});
@@ -27,4 +27,4 @@ var burger =
 	}
 };
 
-module.exports = burger;
+module.exports = user;

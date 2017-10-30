@@ -1,10 +1,20 @@
-$('#register').on("click", function(event)
+$('#register').on("submit", function(event)
 {
-	console.log($('#register-password').val())
+	event.preventDefault();
+
+	var name = $('#register-name').val().trim()
+	var email = $('#register-email').val().toLowerCase().trim()
+	var password = $('#register-password').val().trim()
+
+	console.log(name)
+	console.log(email)
+	console.log(password)
 
 	var data = 
 	{
-		password: $('#register-password').val()
+		name: name,
+		email: email,
+		password: password
 	}
 
 	$.ajax(
@@ -14,7 +24,10 @@ $('#register').on("click", function(event)
 		data: data
 	}).then(function(result)
 	{
-		console.log(result)
+		if (result === "error")
+		{
+			console.log("There was an error!")
+		}
 	})
 })
 
