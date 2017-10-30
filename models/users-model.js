@@ -4,15 +4,23 @@ var user =
 {
 	all: function(cb)
 	{
-		orm.selectAll("burgers", function(result)
+		orm.selectAll("users", function(result)
 		{
 			cb(result);
 		});
 	},
 
-	createUser: function(name, email, password, cb)
+	getEmail: function(email, cb)
 	{
-		orm.create("users", name, email, password, function(result)
+		orm.selectEmail("users", email, function(result)
+		{
+			cb(result);
+		});
+	},
+
+	createUser: function(name, email, password, token, cb)
+	{
+		orm.create("users", name, email, password, token, function(result)
 		{
 			cb(result)
 		});

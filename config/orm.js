@@ -12,9 +12,18 @@ var orm =
 		});
 	},
 
-	create: function(table, name, email, password, cb)
+	selectEmail: function(table, email, cb)
 	{
-		connection.query('INSERT INTO '+table+'(name, email, password, level, coins) VALUES (?, ?, ?, 1, 500);', [name, email, password], function(err, result)
+		connection.query("SELECT id FROM users WHERE email=?", [email], function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	},
+
+	create: function(table, name, email, password, token, cb)
+	{
+		connection.query('INSERT INTO '+table+'(name, email, password, token, level, coins) VALUES (?, ?, ?, ?, 1, 500);', [name, email, password, token], function(err, result)
 		{
 			if (err){throw err};
 			cb(result);

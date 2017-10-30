@@ -24,6 +24,12 @@ $('#register').on("submit", function(event)
 		data: data
 	}).then(function(result)
 	{
+		console.log(result)
+		if (result === "emailError")
+		{
+			console.log("We already have this email in our system.")
+		}
+
 		if (result === "error")
 		{
 			console.log("There was an error!")
