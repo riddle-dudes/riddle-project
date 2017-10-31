@@ -63,7 +63,7 @@ $('#login').on("submit", function(event)
 		data: data
 	}).then(function(result)
 	{
-		if (result = "THERE WAS A HUGE ERROR!")
+		if (result === "THERE WAS A HUGE ERROR!")
 		{
 			$('#login-error').show()
 			$('#login-error').html("Email and password do not match.")
