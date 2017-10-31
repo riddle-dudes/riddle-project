@@ -27,18 +27,16 @@ router.get("/", function(req, res)
 
 router.post('/register', function(req, res)
 {
-	usersModel.all(function(result)
+	usersModel.getEmail(req.body.email, function(result)
 	{
-		for (var i=0; i<result.length; i++)
-		{
-			console.log(result[i].email)
+		console.log("getEmail call...")
 
-			if (req.body.email === result[i].email)
-			{
-				console.log("SENDING ERROR "+i);
-				res.send("emailError");
-				return;
-			}
+		if (result.length > 0)
+		{
+			console.log("getEmail call...")
+			console.log(result.length)
+			res.send("emailError");
+			return;			
 		}
 
 		if (req.body.name !== "" && validator.isEmail(req.body.email) && req.body.password !== "")
@@ -62,42 +60,49 @@ router.post('/register', function(req, res)
 			})		
 		}
 
+		else if (!validator.isEmail(req.body.email))
+		{
+			res.send("invalidEmail")
+		}
+
 		else
 		{
-			res.send("error")
+			res.send("tryAgain")
+		}
+	});
+
+})
+
+router.post("/login", function(req, res)
+{
+	console.log(req.body.email+" "+req.body.password)
+
+	var key = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ];
+	var textBytes = aesjs.utils.utf8.toBytes(req.body.password);
+	var aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(5));
+	var encryptedBytes = aesCtr.encrypt(textBytes);
+	var encryptedHex = aesjs.utils.hex.fromBytes(encryptedBytes);
+
+	usersModel.getUser(req.body.email, encryptedHex, function(result)
+	{
+		if (result[0] === undefined)
+		{
+			res.send("THERE WAS A HUGE ERROR!")
+			return;
+		}
+
+		else
+		{
+			var token = createToken();
+			console.log("id "+result[0].id)
+			console.log("New token "+token)
+			usersModel.updateToken(result[0].id, token, function(result)
+			{
+				res.send(token)
+				return;
+			})
 		}
 	})
-
-/*	if (req.body.password !== "" && validator.isEmail(req.body.email) && req.body.password !== "")
-	{
-		var key = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ];
-
-		var password = req.body.password;
-		var textBytes = aesjs.utils.utf8.toBytes(password);
-
-		var aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(5));
-		var encryptedBytes = aesCtr.encrypt(textBytes);
-
-		var encryptedHex = aesjs.utils.hex.fromBytes(encryptedBytes);
-		var token = createToken();
-
-		console.log(encryptedHex);
-
-		usersModel.createUser(req.body.name, req.body.email, encryptedHex, token, function(result)
-		{
-			res.send("created")
-		})*/
-
-
-		//Needed to see what the password was!
-/*		var key = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 ];
-		var encryptedBytes = aesjs.utils.hex.toBytes(encryptedHex);
-		var aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(5));
-		var decryptedBytes = aesCtr.decrypt(encryptedBytes); 
-		var decryptedText = aesjs.utils.utf8.fromBytes(decryptedBytes);
-		console.log("What the password was!")
-		console.log(decryptedText);*/
-
 })
 
 

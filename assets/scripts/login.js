@@ -1,5 +1,7 @@
 $('#register').on("submit", function(event)
 {
+	$('#login-error').hide()
+	$('#register-error').hide()
 	event.preventDefault();
 
 	var name = $('#register-name').val().trim()
@@ -24,19 +26,52 @@ $('#register').on("submit", function(event)
 		data: data
 	}).then(function(result)
 	{
-		console.log(result)
 		if (result === "emailError")
 		{
-			console.log("We already have this email in our system.")
+			$('#register-error').show()
+			$('#register-error').html("We already have this email in our system.")
 		}
 
-		if (result === "error")
+		else if (result === "error")
 		{
-			console.log("There was an error!")
+			$('#register-error').show()
+			$('#register-error').html("There was an error.  Try again!")
 		}
 	})
 })
 
+$('#login').on("submit", function(event)
+{
+	$('#login-error').hide()
+	$('#register-error').hide()
+	event.preventDefault();
+
+	var email = $('#login-email').val().toLowerCase().trim()
+	var password = $('#login-password').val().trim()
+	console.log(email+" "+password)
+
+	var data = 
+	{
+		email: email,
+		password: password
+	}
+
+	$.ajax(
+	{
+		url:'/login',
+		type: 'post',
+		data: data
+	}).then(function(result)
+	{
+		if (result = "THERE WAS A HUGE ERROR!")
+		{
+			$('#login-error').show()
+			$('#login-error').html("Email and password do not match.")
+		}
+		sessionStorage.setItem("token", result);
+	})
+
+})
 
 
 

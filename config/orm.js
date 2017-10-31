@@ -12,9 +12,27 @@ var orm =
 		});
 	},
 
-	selectEmail: function(table, email, cb)
+	selectEmail: function(email, cb)
 	{
 		connection.query("SELECT id FROM users WHERE email=?", [email], function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	},
+
+	findUser: function(email, password, cb)
+	{
+		connection.query("SELECT id FROM users WHERE email=? AND password=?", [email,  password], function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	},
+
+	updateToken: function(id, token, cb)
+	{
+		connection.query("UPDATE users SET token = ? WHERE id = ?", [token, id], function(err, result)
 		{
 			if(err){throw err}
 			cb(result)

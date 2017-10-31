@@ -12,6 +12,7 @@ password VARCHAR(255) not null,
 token VARCHAR(255),
 level INT(50) not null,
 coins INT(50) not null,
+imageUrl VARCHAR(1000),
 primary key(id)
 );
 

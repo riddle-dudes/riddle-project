@@ -12,10 +12,26 @@ var user =
 
 	getEmail: function(email, cb)
 	{
-		orm.selectEmail("users", email, function(result)
+		orm.selectEmail(email, function(result)
 		{
 			cb(result);
 		});
+	},
+
+	getUser: function(email, password, cb)
+	{
+		orm.findUser(email, password, function(result)
+		{
+			cb(result)
+		})
+	},
+
+	updateToken: function(id, token, cb)
+	{
+		orm.updateToken(id, token, function(result)
+		{
+			cb(result)
+		})
 	},
 
 	createUser: function(name, email, password, token, cb)

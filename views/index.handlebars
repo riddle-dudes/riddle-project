@@ -4,8 +4,19 @@
 	<div class="row">
 		<div class="col-md-6">
 			<h1>Login</h1>
-			<input type="text" class="form-control" placeholder="test password">
-			<button class="btn btn-primary" id="login">Login</button>
+			<form id="login">
+				<div class="form-group">
+			    	<label for="login-email">Email address</label>
+			    	<input type="email" class="form-control" id="login-email" aria-describedby="emailHelp" required>
+				</div>
+				<div class="form-group">
+			    	<label for="login-password">Password</label>
+			    	<input type="password" class="form-control" id="login-password" required>
+			  	</div>
+			  	<input type="submit" class="btn btn-primary" value="Login"></input>
+			</form>
+			<div class="alert alert-danger" role="alert" id="login-error">
+			</div>
 		</div>
 		<div class="col-md-6">
 			<h1>Register</h1>
@@ -24,6 +35,8 @@
 			  	</div>
 			  	<input type="submit" class="btn btn-primary" value ="Register"></input>
 			</form>
+			<div class="alert alert-danger" role="alert" id="register-error">
+			</div>
 		</div>
 	</div>
 </div>
