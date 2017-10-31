@@ -10,6 +10,7 @@ router.get("/", function(req, res)
 	res.render("index");
 });
 
+//hub changes
 router.get("/hub", function(req, res) {
 	res.render("hub");
 });

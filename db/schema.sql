@@ -9,8 +9,10 @@ id INT(50) auto_increment not null,
 name VARCHAR(255) not null,
 email VARCHAR(255) not null,
 password VARCHAR(255) not null,
+token VARCHAR(255), -- put token in session storage in browser --
 level INT(50) not null,
 coins INT(50) not null,
+imageUrl VARCHAR(1000) not null,
 primary key(id)
 );
 
