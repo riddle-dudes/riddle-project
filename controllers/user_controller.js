@@ -89,6 +89,7 @@ router.post("/login", function(req, res)
 
 	usersModel.getUser(req.body.email, encryptedHex, function(result)
 	{
+		console.log(result)
 		if (result[0] === undefined)
 		{
 			res.send("THERE WAS A HUGE ERROR!")
