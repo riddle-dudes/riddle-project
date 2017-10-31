@@ -14,9 +14,9 @@
     </div>
       
       <ul class="nav navbar-nav navbar-left">
-        <li class="active"><a href="#">Name: VAR HERE</a></li>
-        <li><a href="#">Level: VAR HERE</a></li>
-        <li><a href="#">Coins: VAR HERE</a></li>
+        <li class="active nav-item"><a href="#">Name: VAR HERE</a></li>
+        <li class="nav-item"><a href="#">Level: VAR HERE</a></li>
+        <li class="nav-item"><a href="#">Coins: VAR HERE</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -30,9 +30,16 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-1"></div>
-		<div></div>
-		<div class="col-md-1"></div>
+		<div class="col-md-12">
+			<p style="background:blue">This is the riddle</p>
+		</div>
+		<form id="form-answer">
+				<div class="form-group">
+			    	<label for="answer">Answer</label>
+			    	<input type="text" class="form-control" id="submit-answer" required></input>
+			    	<input type="submit" class="btn btn-primary" value ="Submit"></input>
+				</div>
+		</form>
 	</div>
 </div>
 
