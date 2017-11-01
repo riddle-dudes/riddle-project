@@ -18,9 +18,9 @@ var riddle =
 		})
 	},
 
-	getRiddlesWithLevel: function(level, cb)
+	getRiddlesWithLevelNotSeen: function(userId, level, cb)
 	{
-		orm.getRiddlesWithLevel("riddles", level, function(result)
+		orm.getRiddlesWithLevelNotSeen("riddles", userId, level, function(result)
 		{
 			cb(result)
 		})

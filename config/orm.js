@@ -84,9 +84,9 @@ var orm =
 		})
 	},
 
-	getRiddlesWithLevel: function(table, level, cb)
+	getRiddlesWithLevelNotSeen: function(table, userId, level, cb)
 	{
-		connection.query('SELECT * FROM '+table+' WHERE level=?', [level], function(err, result)
+		connection.query('select riddles.id, riddles.text from riddles where level=? and riddles.id not in (select riddle from riddles_correct where ? = riddles_correct.user);', [level, userId], function(err, result)
 		{
 			if(err){throw err}
 			cb(result)

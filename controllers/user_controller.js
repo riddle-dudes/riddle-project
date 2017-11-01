@@ -115,9 +115,9 @@ var testSubmit = function()
 {
 	var req = 
 	{
-		token: "VOtIuyPCUI",
+		token: "ocPhLEnTRJ",
 		riddleId: 2,
-		input: "cat"
+		input: "dog"
 	}
 
 	var correct = false;
@@ -168,10 +168,26 @@ var testSubmit = function()
 
 
 			//Finding a new Riddle
-			riddlesModel.getRiddlesWithLevel(level, function(result)
+			riddlesModel.getRiddlesWithLevelNotSeen(user[0].id, level, function(result)
 			{
+				var r = Math.floor(Math.random() * (result.length))
 				console.log(result)
+				console.log(result[r])
+				riddle = result[r].text
+				riddleId = result[r].id
+				console.log(riddle)
+				console.log(riddleId)
 			})
+
+			//Send this object back to the user
+			var data = 
+			{
+				correct: correct,
+				coins: coins,
+				level: level,
+				riddle: riddle,
+				riddleId: riddleId
+			}
 
 
 		})
