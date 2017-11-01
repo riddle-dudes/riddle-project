@@ -41,7 +41,7 @@ var orm =
 
 	create: function(table, name, email, password, token, cb)
 	{
-		connection.query('INSERT INTO '+table+'(name, email, password, token, level, coins) VALUES (?, ?, ?, ?, 1, 500);', [name, email, password, token], function(err, result)
+		connection.query('INSERT INTO '+table+'(name, email, password, token, level, coins) VALUES (?, ?, ?, ?, 1, 100);', [name, email, password, token], function(err, result)
 		{
 			if (err){throw err};
 			cb(result);
@@ -55,6 +55,24 @@ var orm =
 			if(err){throw err};
 			cb(result);
 		});
+	},
+
+	findFromId: function(table, id, cb)
+	{
+		connection.query("SELECT * FROM "+table+" WHERE id=?", [id], function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	},
+
+	findFromToken: function(table, token, cb)
+	{
+		connection.query("SELECT * FROM "+table+" WHERE token=?", [token], function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
 	}
 };
 

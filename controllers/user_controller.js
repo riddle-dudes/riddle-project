@@ -1,5 +1,6 @@
 var express = require('express');
 var usersModel = require('../models/users-model.js');
+var riddlesModel = require('../models/riddles-model.js');
 var aesjs = require('aes-js');
 var validator = require('validator');
 
@@ -109,6 +110,72 @@ router.post("/login", function(req, res)
 		}
 	})
 })
+
+var testSubmit = function()
+{
+	var req = 
+	{
+		token: "VOtIuyPCUI",
+		riddleId: 2,
+		input: "dog"
+	}
+
+	var correct = false;
+	var coins = 0;
+	var level = 0;
+	var riddle = "";
+	var riddleId = "";
+
+	usersModel.findFromToken(req.token, function(user)
+	{
+		console.log(user)
+		level = user[0].level
+
+		riddlesModel.findFromId(req.riddleId, function(result)
+		{
+			if (req.input === result[0].answer)
+			{
+				console.log("User got it right!")
+				console.log("User started with "+user[0].coins)
+				coins = user[0].coins + 100*Math.pow(2, user[0].level-1)/5;
+				console.log("Now user has "+coins)
+				correct = true;
+
+				if (coins >= 100*Math.pow(2, user[0].level))
+				{
+					level = user[0].level+1
+					console.log("User level uped and is now level "+level)
+				}
+			}
+
+			else
+			{
+				console.log("User got it wrong!")
+				console.log("User started with "+user[0].coins)
+				coins = user[0].coins - 100*Math.pow(2, user[0].level-1)/5;
+				console.log("Now user has "+coins)
+
+				if (coins < 100*Math.pow(2, user[0].level-1) && user[0].level>1)
+				{
+					level = user[0].level-1
+					console.log("User downgraded in level and is now level "+level)
+				}
+			}
+
+		})
+	})
+
+	for (var i=1; i<7; i++)
+	{
+		console.log("----------------------------------")
+		console.log(100*Math.pow(2, i-1))
+		console.log(100*Math.pow(2, i-1)/5)
+		console.log("----------------------------------")
+	}
+
+}
+
+testSubmit()
 
 
 module.exports = router;
