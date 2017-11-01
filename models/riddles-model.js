@@ -8,6 +8,22 @@ var riddle =
 		{
 			cb(result)
 		});
+	},
+
+	addRiddleCorrect: function(userId, riddleId, cb)
+	{
+		orm.addRiddleCorrect("riddles_correct", userId, riddleId, function(result)
+		{
+			cb(result)
+		})
+	},
+
+	getRiddlesWithLevel: function(level, cb)
+	{
+		orm.getRiddlesWithLevel("riddles", level, function(result)
+		{
+			cb(result)
+		})
 	}
 };
 

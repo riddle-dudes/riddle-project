@@ -117,7 +117,7 @@ var testSubmit = function()
 	{
 		token: "VOtIuyPCUI",
 		riddleId: 2,
-		input: "dog"
+		input: "cat"
 	}
 
 	var correct = false;
@@ -133,6 +133,9 @@ var testSubmit = function()
 
 		riddlesModel.findFromId(req.riddleId, function(result)
 		{
+
+
+			//Seeing if answer is correct or not
 			if (req.input === result[0].answer)
 			{
 				console.log("User got it right!")
@@ -140,6 +143,7 @@ var testSubmit = function()
 				coins = user[0].coins + 100*Math.pow(2, user[0].level-1)/5;
 				console.log("Now user has "+coins)
 				correct = true;
+				riddlesModel.addRiddleCorrect(user[0].id, req.riddleId, function(result){})
 
 				if (coins >= 100*Math.pow(2, user[0].level))
 				{
@@ -162,17 +166,16 @@ var testSubmit = function()
 				}
 			}
 
+
+			//Finding a new Riddle
+			riddlesModel.getRiddlesWithLevel(level, function(result)
+			{
+				console.log(result)
+			})
+
+
 		})
 	})
-
-	for (var i=1; i<7; i++)
-	{
-		console.log("----------------------------------")
-		console.log(100*Math.pow(2, i-1))
-		console.log(100*Math.pow(2, i-1)/5)
-		console.log("----------------------------------")
-	}
-
 }
 
 testSubmit()

@@ -73,6 +73,24 @@ var orm =
 			if(err){throw err}
 			cb(result)
 		})
+	},
+
+	addRiddleCorrect: function(table, userId, riddleId, cb)
+	{
+		connection.query('INSERT INTO '+table+'(user, riddle) VALUES (?,?);', [userId, riddleId], function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	},
+
+	getRiddlesWithLevel: function(table, level, cb)
+	{
+		connection.query('SELECT * FROM '+table+' WHERE level=?', [level], function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
 	}
 };
 
