@@ -42,12 +42,20 @@ var user =
 		});
 	},
 
-	update: function(id, cb)
+	findFromToken: function(token, cb)
 	{
-		orm.updateOne("burgers", id, function(result)
+		orm.findFromToken("users", token, function(result)
 		{
 			cb(result)
 		});
+	},
+
+	updateUser: function(id, coins, level, cb)
+	{
+		orm.updateUser(id, coins, level, function(result)
+		{
+			cb(result)
+		})
 	}
 };
 

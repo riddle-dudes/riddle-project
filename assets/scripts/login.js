@@ -37,6 +37,11 @@ $('#register').on("submit", function(event)
 			$('#register-error').show()
 			$('#register-error').html("There was an error.  Try again!")
 		}
+
+		else
+		{
+			window.location = '/hublogin'
+		}
 	})
 })
 
@@ -68,13 +73,21 @@ $('#login').on("submit", function(event)
 			$('#login-error').show()
 			$('#login-error').html("Email and password do not match.")
 		}
-		sessionStorage.setItem("token", result);
+
+		else
+		{
+			sessionStorage.setItem("token", result);
+/*			$.ajax(
+			{
+				url: "/hublogin",
+				tyle: "get"
+			})*/
+
+			window.location = '/hublogin'
+		}
 	})
 
 })
-
-
-
 
 /*$(document).on("click", ".devour", function(event)
 {

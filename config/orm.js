@@ -41,21 +41,57 @@ var orm =
 
 	create: function(table, name, email, password, token, cb)
 	{
-		connection.query('INSERT INTO '+table+'(name, email, password, token, level, coins) VALUES (?, ?, ?, ?, 1, 500);', [name, email, password, token], function(err, result)
+		connection.query('INSERT INTO '+table+'(name, email, password, token, level, coins) VALUES (?, ?, ?, ?, 1, 100);', [name, email, password, token], function(err, result)
 		{
 			if (err){throw err};
 			cb(result);
 		});
 	},
 
-	updateOne: function(table, id, cb)
+	findFromId: function(table, id, cb)
 	{
-		connection.query('UPDATE '+table+' SET devoured = TRUE WHERE id = ?', [id], function(err, result)
+		connection.query("SELECT * FROM "+table+" WHERE id=?", [id], function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	},
+
+	findFromToken: function(table, token, cb)
+	{
+		connection.query("SELECT * FROM "+table+" WHERE token=?", [token], function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	},
+
+	addRiddleCorrect: function(table, userId, riddleId, cb)
+	{
+		connection.query('INSERT INTO '+table+'(user, riddle) VALUES (?,?);', [userId, riddleId], function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	},
+
+	getRiddlesWithLevelNotSeen: function(table, userId, level, cb)
+	{
+		connection.query('select riddles.id, riddles.text from riddles where level=? and riddles.id not in (select riddle from riddles_correct where ? = riddles_correct.user);', [level, userId], function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	},
+
+	updateUser: function(id, coins, level, cb)
+	{
+		connection.query('UPDATE users SET coins = ?, level = ? WHERE id = ?;', [coins, level, id], function(err, result)
 		{
 			if(err){throw err};
 			cb(result);
 		});
-	}
+	},
 };
 
 module.exports = orm;
