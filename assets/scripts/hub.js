@@ -1,3 +1,26 @@
+var token = sessionStorage.getItem("token")
+console.log(token)
+
+var data = 
+{
+	token: token
+}
+
+$.ajax(
+{
+	url: '/getinfo',
+	type: 'post',
+	data: data
+}).then(function(result)
+{
+	console.log(result)
+})
+
+
+
+
+
+
 $("#answer").on("click", function(event) {
 
 var answer = $("#submit-answer").val().toLowerCase().trim();
@@ -19,11 +42,7 @@ console.log(hubData)
 		type: "post",
 		data: hubData
 	}).then(function(result) {
-		/*correct: ,
-		coins:
-		level:
-		riddle: ""
-		riddleId: num*/console.log(token);
+
 	})
 
 })

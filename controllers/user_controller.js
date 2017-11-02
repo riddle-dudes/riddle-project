@@ -120,12 +120,12 @@ router.get("/hublogin", function(req, res)
 	res.render("hub");
 })
 
-var testOnLoad = function()
+var testOnLoad = function(req)
 {
-	var req = 
+/*	var req = 
 	{
 		token: "gFjehAhYiK",
-	}
+	}*/
 
 	var coins = 0;
 	var level = 0;
@@ -156,14 +156,54 @@ var testOnLoad = function()
 			riddle: riddle,
 			riddleId: riddleId
 		}
+
+		return data;
 	})
 }
+
+router.post("/getinfo", function(req, res)
+{
+	var name = "";
+	var coins = 0;
+	var level = 0;
+	var riddle = "";
+	var riddleId = 0;
+
+	usersModel.findFromToken(req.body.token, function(user)
+	{
+		coins = user[0].coins;
+		level = user[0].level;
+		name = user[0].name;
+
+		riddlesModel.getRiddlesWithLevelNotSeen(user[0].id, level, function(result)
+		{
+			var r = Math.floor(Math.random() * (result.length))
+			riddle = result[r].text
+			riddleId = result[r].id
+			console.log(riddle)
+			console.log(riddleId)
+			
+			//Send this object back to the user
+			var data = 
+			{
+				name: name,
+				coins: coins,
+				level: level,
+				riddle: riddle,
+				riddleId: riddleId
+			}
+
+			res.send(data)
+
+		})
+	})
+})
 
 var testSubmit = function()
 {
 	var req = 
 	{
-		token: "gFjehAhYiK",
+		token: "rApSjbbsyG",
 		riddleId: 2,
 		input: "dog"
 	}
@@ -245,7 +285,7 @@ var testSubmit = function()
 	})
 }
 
-testSubmit()
+//testSubmit()
 
 
 module.exports = router;
