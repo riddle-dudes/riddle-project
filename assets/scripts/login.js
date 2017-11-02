@@ -73,9 +73,6 @@ $('#login').on("submit", function(event)
 
 })
 
-
-
-
 /*$(document).on("click", ".devour", function(event)
 {
 	var ID = $(this).attr("id");
