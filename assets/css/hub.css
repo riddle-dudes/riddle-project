@@ -1,0 +1,18 @@
+.profile-name {
+	display: inline-block;
+	float: right;
+}
+
+.profile-level {
+	display: inline-block;
+	float: right;
+}
+
+.profile-coins {
+	display: inline-block;
+	float: right;
+}
+
+.riddle-id {
+	display: inline-block;
+}
