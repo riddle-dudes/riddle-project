@@ -40,6 +40,7 @@ $('#register').on("submit", function(event)
 
 		else
 		{
+			sessionStorage.setItem("token", result);
 			window.location = '/hublogin'
 		}
 	})
