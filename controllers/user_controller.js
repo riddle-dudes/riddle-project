@@ -136,7 +136,7 @@ var testSubmit = function()
 
 
 			//Seeing if answer is correct or not
-			if (req.input === result[0].answer)
+			if (req.input.toLowerCase().trim() === result[0].answer.toLowerCase().trim())
 			{
 				console.log("User got it right!")
 				console.log("User started with "+user[0].coins)
@@ -188,8 +188,6 @@ var testSubmit = function()
 				riddle: riddle,
 				riddleId: riddleId
 			}
-
-
 		})
 	})
 }
