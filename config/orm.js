@@ -48,15 +48,6 @@ var orm =
 		});
 	},
 
-	updateOne: function(table, id, cb)
-	{
-		connection.query('UPDATE '+table+' SET devoured = TRUE WHERE id = ?', [id], function(err, result)
-		{
-			if(err){throw err};
-			cb(result);
-		});
-	},
-
 	findFromId: function(table, id, cb)
 	{
 		connection.query("SELECT * FROM "+table+" WHERE id=?", [id], function(err, result)
@@ -91,7 +82,16 @@ var orm =
 			if(err){throw err}
 			cb(result)
 		})
-	}
+	},
+
+	updateUser: function(id, coins, level, cb)
+	{
+		connection.query('UPDATE users SET coins = ?, level = ? WHERE id = ?;', [coins, level, id], function(err, result)
+		{
+			if(err){throw err};
+			cb(result);
+		});
+	},
 };
 
 module.exports = orm;

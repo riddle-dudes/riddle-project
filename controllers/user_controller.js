@@ -120,11 +120,50 @@ router.get("/hublogin", function(req, res)
 	res.render("hub");
 })
 
+var testOnLoad = function()
+{
+	var req = 
+	{
+		token: "gFjehAhYiK",
+	}
+
+	var coins = 0;
+	var level = 0;
+	var riddle = "";
+	var riddleId = "";
+
+	usersModel.findFromToken(req.token, function(user)
+	{
+		coins = user[0].coins;
+		level = user[0].level;
+
+		riddlesModel.getRiddlesWithLevelNotSeen(user[0].id, level, function(result)
+		{
+			var r = Math.floor(Math.random() * (result.length))
+			console.log(result)
+			console.log(result[r])
+			riddle = result[r].text
+			riddleId = result[r].id
+			console.log(riddle)
+			console.log(riddleId)
+		})
+
+		//Send this object back to the user
+		var data = 
+		{
+			coins: coins,
+			level: level,
+			riddle: riddle,
+			riddleId: riddleId
+		}
+	})
+}
+
 var testSubmit = function()
 {
 	var req = 
 	{
-		token: "ocPhLEnTRJ",
+		token: "gFjehAhYiK",
 		riddleId: 2,
 		input: "dog"
 	}
@@ -175,6 +214,12 @@ var testSubmit = function()
 				}
 			}
 
+			usersModel.updateUser(user[0].id, coins, level, function(result)
+			{
+				//Sending 'correct' to client
+				//res.send(correct)
+			})
+/*
 			//Finding a new Riddle
 			riddlesModel.getRiddlesWithLevelNotSeen(user[0].id, level, function(result)
 			{
@@ -195,12 +240,12 @@ var testSubmit = function()
 				level: level,
 				riddle: riddle,
 				riddleId: riddleId
-			}
+			}*/
 		})
 	})
 }
 
-//testSubmit()
+testSubmit()
 
 
 module.exports = router;

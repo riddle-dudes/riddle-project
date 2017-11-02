@@ -48,6 +48,14 @@ var user =
 		{
 			cb(result)
 		});
+	},
+
+	updateUser: function(id, coins, level, cb)
+	{
+		orm.updateUser(id, coins, level, function(result)
+		{
+			cb(result)
+		})
 	}
 };
 

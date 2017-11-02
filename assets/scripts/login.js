@@ -40,11 +40,7 @@ $('#register').on("submit", function(event)
 
 		else
 		{
-			$.ajax(
-			{
-				url: "/hub",
-				tyle: "get"
-			})
+			window.location = '/hublogin'
 		}
 	})
 })
@@ -87,7 +83,7 @@ $('#login').on("submit", function(event)
 				tyle: "get"
 			})*/
 
-			 window.location = '/hublogin'
+			window.location = '/hublogin'
 		}
 	})
 
