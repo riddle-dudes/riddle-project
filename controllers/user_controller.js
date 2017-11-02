@@ -120,46 +120,6 @@ router.get("/hublogin", function(req, res)
 	res.render("hub");
 })
 
-var testOnLoad = function(req)
-{
-/*	var req = 
-	{
-		token: "gFjehAhYiK",
-	}*/
-
-	var coins = 0;
-	var level = 0;
-	var riddle = "";
-	var riddleId = "";
-
-	usersModel.findFromToken(req.token, function(user)
-	{
-		coins = user[0].coins;
-		level = user[0].level;
-
-		riddlesModel.getRiddlesWithLevelNotSeen(user[0].id, level, function(result)
-		{
-			var r = Math.floor(Math.random() * (result.length))
-			console.log(result)
-			console.log(result[r])
-			riddle = result[r].text
-			riddleId = result[r].id
-			console.log(riddle)
-			console.log(riddleId)
-		})
-
-		//Send this object back to the user
-		var data = 
-		{
-			coins: coins,
-			level: level,
-			riddle: riddle,
-			riddleId: riddleId
-		}
-
-		return data;
-	})
-}
 
 router.post("/getinfo", function(req, res)
 {
@@ -177,6 +137,7 @@ router.post("/getinfo", function(req, res)
 
 		riddlesModel.getRiddlesWithLevelNotSeen(user[0].id, level, function(result)
 		{
+			console.log(result)
 			var r = Math.floor(Math.random() * (result.length))
 			riddle = result[r].text
 			riddleId = result[r].id
@@ -194,98 +155,49 @@ router.post("/getinfo", function(req, res)
 			}
 
 			res.send(data)
-
 		})
 	})
 })
 
-var testSubmit = function()
+router.post("/submit", function(req, res)
 {
-	var req = 
-	{
-		token: "rApSjbbsyG",
-		riddleId: 2,
-		input: "dog"
-	}
-
 	var correct = false;
-	var coins = 0;
-	var level = 0;
-	var riddle = "";
-	var riddleId = "";
 
-	usersModel.findFromToken(req.token, function(user)
+	usersModel.findFromToken(req.body.token, function(user)
 	{
 		console.log(user)
 		level = user[0].level
 
-		riddlesModel.findFromId(req.riddleId, function(result)
+		riddlesModel.findFromId(req.body.riddleId, function(result)
 		{
-
-
-			//Seeing if answer is correct or not
-			if (req.input.toLowerCase().trim() === result[0].answer.toLowerCase().trim())
+			if (req.body.input.toLowerCase().trim() === result[0].answer.toLowerCase().trim())
 			{
-				console.log("User got it right!")
-				console.log("User started with "+user[0].coins)
 				coins = user[0].coins + 100*Math.pow(2, user[0].level-1)/5;
-				console.log("Now user has "+coins)
 				correct = true;
-				riddlesModel.addRiddleCorrect(user[0].id, req.riddleId, function(result){})
+				riddlesModel.addRiddleCorrect(user[0].id, req.body.riddleId, function(result){})
 
 				if (coins >= 100*Math.pow(2, user[0].level))
 				{
 					level = user[0].level+1
-					console.log("User level uped and is now level "+level)
 				}
 			}
 
 			else
 			{
-				console.log("User got it wrong!")
-				console.log("User started with "+user[0].coins)
 				coins = user[0].coins - 100*Math.pow(2, user[0].level-1)/5;
-				console.log("Now user has "+coins)
 
 				if (coins < 100*Math.pow(2, user[0].level-1) && user[0].level>1)
 				{
 					level = user[0].level-1
-					console.log("User downgraded in level and is now level "+level)
 				}
 			}
 
 			usersModel.updateUser(user[0].id, coins, level, function(result)
 			{
-				//Sending 'correct' to client
-				//res.send(correct)
+				res.send(correct)
 			})
-/*
-			//Finding a new Riddle
-			riddlesModel.getRiddlesWithLevelNotSeen(user[0].id, level, function(result)
-			{
-				var r = Math.floor(Math.random() * (result.length))
-				console.log(result)
-				console.log(result[r])
-				riddle = result[r].text
-				riddleId = result[r].id
-				console.log(riddle)
-				console.log(riddleId)
-			})
-
-			//Send this object back to the user
-			var data = 
-			{
-				correct: correct,
-				coins: coins,
-				level: level,
-				riddle: riddle,
-				riddleId: riddleId
-			}*/
 		})
 	})
-}
-
-//testSubmit()
-
+})
 
 module.exports = router;

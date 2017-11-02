@@ -1,3 +1,4 @@
+var riddleId = 0;
 var token = sessionStorage.getItem("token")
 console.log(token)
 
@@ -14,36 +15,33 @@ $.ajax(
 }).then(function(result)
 {
 	console.log(result)
+	riddleId = result.riddleId
 })
-
-
-
-
 
 
 $("#answer").on("click", function(event) {
 
-var answer = $("#submit-answer").val().toLowerCase().trim();
-console.log(answer);
+	var answer = $("#submit-answer").val().toLowerCase().trim();
+	console.log(answer)
 
-var riddleId = 1;
+	var data = 
+	{
+		input: answer,
+		token: token,
+		riddleId: riddleId
+	}
 
-
-
-var hubData = {
-	input: answer,
-	token: sessionStorage.getItem("token"),
-	riddleId: riddleId
-}
-
-console.log(hubData)
-	$.ajax({
+	$.ajax(
+	{
 		url: "/submit",
 		type: "post",
-		data: hubData
-	}).then(function(result) {
-
+		data: data
+	}).then(function(result)
+	{
+		console.log(result)
 	})
+
+	window.location.reload();
 
 })
 /*$('#login').on("submit", function(event)
