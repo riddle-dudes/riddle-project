@@ -115,6 +115,11 @@ router.post("/login", function(req, res)
 	})
 })
 
+router.get("/hublogin", function(req, res)
+{
+	res.render("hub");
+})
+
 var testSubmit = function()
 {
 	var req = 
@@ -170,7 +175,6 @@ var testSubmit = function()
 				}
 			}
 
-
 			//Finding a new Riddle
 			riddlesModel.getRiddlesWithLevelNotSeen(user[0].id, level, function(result)
 			{
@@ -196,7 +200,7 @@ var testSubmit = function()
 	})
 }
 
-testSubmit()
+//testSubmit()
 
 
 module.exports = router;
