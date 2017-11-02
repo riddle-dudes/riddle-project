@@ -34,8 +34,8 @@ $.ajax(
 })
 
 
-$("#answer").on("click", function(event) {
-
+$("#answer").on("click", function(event)
+{
 	if (!freeze)
 	{
 		freeze = true;
