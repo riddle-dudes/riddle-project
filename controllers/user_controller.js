@@ -24,9 +24,13 @@ router.get("/", function(req, res)
 	res.render("index");
 });
 
-router.get("/hub", function(req, res) {
+router.get("/hub/:token?", function(req, res) {
+	var chosen = req.params.token;
+	if (chosen) {
+		console.log(chosen);
+	}
 	res.render("hub");
-})
+});
 
 
 router.post('/register', function(req, res)
@@ -109,6 +113,5 @@ router.post("/login", function(req, res)
 		}
 	})
 })
-
 
 module.exports = router;

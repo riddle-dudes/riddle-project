@@ -11,13 +11,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/"><h1>Welcome to Riddles Gallore</h1></a>
+      <a class="navbar-brand" href="/hub"><h1>Welcome to Riddles Gallore</h1></a>
     </div>
       
       <ul class="nav navbar-nav navbar-left">
-        <li class="active nav-item"><a href="#">Name: VAR HERE</a></li>
-        <li class="nav-item"><a href="#">Level: VAR HERE</a></li>
-        <li class="nav-item"><a href="#">Coins: VAR HERE</a></li>
+        <li class="active nav-item"><a href="#">Name: <div class="profile-name"></div></a></li>
+        <li class="nav-item"><a href="#">Level: <div class="profile-level"></div></a></li>
+        <li class="nav-item"><a href="#">Coins: <div class="profile-coins"></div></a></li>
       </ul>
     </div>
   </div>
@@ -27,20 +27,16 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<h2>Riddle #: VAR HERE</h2>
+			<h2>Riddle #: <div class="riddle-id"></div></h2>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-12">
 			<p style="background:blue">This is the riddle</p>
 		</div>
-		<form id="form-answer">
-				<div class="form-group">
 			    	<label for="answer">Answer</label>
 			    	<input type="text" class="form-control" id="submit-answer" required></input>
-			    	<input type="submit" class="btn btn-primary" value ="Submit"></input>
-				</div>
-		</form>
+			    	<button type="submit" class="btn btn-primary" id="answer">Submit</button>
 	</div>
 </div>
 
