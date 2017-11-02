@@ -16,6 +16,10 @@ $.ajax(
 {
 	console.log(result)
 	riddleId = result.riddleId
+	$('#name').html(result.name)
+	$('#coins').html(result.coins)
+	$('#level').html(result.level)
+	$('#riddle').html(result.riddle)
 })
 
 
