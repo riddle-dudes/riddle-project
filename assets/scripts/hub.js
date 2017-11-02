@@ -1,6 +1,17 @@
 var riddleId = 0;
 var token = sessionStorage.getItem("token")
 console.log(token)
+var freeze = false
+
+var correctDisplay = function()
+{
+	$('.jumbotron').css("background", "green")
+}
+
+var wrongDisplay = function()
+{
+	$('.jumbotron').css("background", "red")
+}
 
 var data = 
 {
@@ -25,58 +36,44 @@ $.ajax(
 
 $("#answer").on("click", function(event) {
 
-	var answer = $("#submit-answer").val().toLowerCase().trim();
-	console.log(answer)
-
-	var data = 
+	if (!freeze)
 	{
-		input: answer,
-		token: token,
-		riddleId: riddleId
-	}
+		freeze = true;
+		var answer = $("#submit-answer").val().toLowerCase().trim();
+		console.log(answer)
 
-	$.ajax(
-	{
-		url: "/submit",
-		type: "post",
-		data: data
-	}).then(function(result)
-	{
-		console.log(result)
-	})
-
-	window.location.reload();
-
-})
-/*$('#login').on("submit", function(event)
-{
-	$('#login-error').hide()
-	$('#register-error').hide()
-	event.preventDefault();
-
-	var email = $('#login-email').val().toLowerCase().trim()
-	var password = $('#login-password').val().trim()
-	console.log(email+" "+password)
-
-	var data = 
-	{
-		email: email,
-		password: password
-	}
-
-	$.ajax(
-	{
-		url:'/login',
-		type: 'post',
-		data: data
-	}).then(function(result)
-	{
-		if (result === "THERE WAS A HUGE ERROR!")
+		var data = 
 		{
-			$('#login-error').show()
-			$('#login-error').html("Email and password do not match.")
+			input: answer,
+			token: token,
+			riddleId: riddleId
 		}
-		sessionStorage.setItem("token", result);
-	})
 
-})*/
+		$.ajax(
+		{
+			url: "/submit",
+			type: "post",
+			data: data
+		}).then(function(result)
+		{
+			if (result)
+			{
+				$('#riddle').hide()
+				$('#correct').show()
+				correctDisplay()
+			}
+
+			else
+			{
+				$('#riddle').hide()
+				$('#wrong').show()
+				wrongDisplay()			
+			}
+
+			setTimeout(function()
+			{
+				window.location.reload();
+			}, 2000)
+		})
+	}
+})

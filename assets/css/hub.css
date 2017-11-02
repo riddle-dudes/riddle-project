@@ -1,6 +1,6 @@
 body
 {
-	background:#e8baff;
+	color:#5c0087;
 }
 
 .jumbotron
@@ -12,21 +12,41 @@ body
 
 #answer
 {
-	background-color: #5c0087;
-	border:none;
-	border-color: #510077;
-	color: white;
+	margin-top:30px;
+	background-color: white;
+	color:#5c0087; 
+	border: 1px solid #5c0087;
+	border-color: #5c0087;
 	border-radius: 7px;
 	padding-left:10px;
-	width:100%;
+	width:50%;
 }
 
 #answer:hover
 {
-	background-color: #8500c4;
+	box-shadow: 0px 10px 10px #5b5b5b;
+	background-color: #5c0087;
+	border:none;
+	border-color: #510077;
+	color: white;
 }
 
 p
 {
 	font-size: 20px;
+}
+
+#correct
+{
+	display: none;
+}
+
+#wrong
+{
+	display: none;
+}
+
+#submit-answer
+{
+	border-color: #5c0087;
 }
