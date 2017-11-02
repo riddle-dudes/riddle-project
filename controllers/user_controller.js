@@ -65,18 +65,22 @@ router.post('/register', function(req, res)
 
 			usersModel.createUser(req.body.name, req.body.email, encryptedHex, token, function(result)
 			{
-				res.send("created")
+				res.send(
+				{
+					result: "created",
+					token: token
+				})
 			})		
 		}
 
 		else if (!validator.isEmail(req.body.email))
 		{
-			res.send("invalidEmail")
+			res.send({result: "invalidEmail"})
 		}
 
 		else
 		{
-			res.send("tryAgain")
+			res.send({result: "tryAgain"})
 		}
 	});
 

@@ -26,13 +26,13 @@ $('#register').on("submit", function(event)
 		data: data
 	}).then(function(result)
 	{
-		if (result === "emailError")
+		if (result.result === "emailError")
 		{
 			$('#register-error').show()
 			$('#register-error').html("We already have this email in our system.")
 		}
 
-		else if (result === "error")
+		else if (result.result === "error")
 		{
 			$('#register-error').show()
 			$('#register-error').html("There was an error.  Try again!")
@@ -40,7 +40,7 @@ $('#register').on("submit", function(event)
 
 		else
 		{
-			sessionStorage.setItem("token", result);
+			sessionStorage.setItem("token", result.token);
 			window.location = '/hublogin'
 		}
 	})
