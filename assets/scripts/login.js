@@ -8,10 +8,6 @@ $('#register').on("submit", function(event)
 	var email = $('#register-email').val().toLowerCase().trim()
 	var password = $('#register-password').val().trim()
 
-	console.log(name)
-	console.log(email)
-	console.log(password)
-
 	var data = 
 	{
 		name: name,
@@ -26,13 +22,14 @@ $('#register').on("submit", function(event)
 		data: data
 	}).then(function(result)
 	{
-		if (result.result === "emailError")
+		console.log(result)
+		if (result === "emailError")
 		{
 			$('#register-error').show()
 			$('#register-error').html("We already have this email in our system.")
 		}
 
-		else if (result.result === "error")
+		else if (result === "error")
 		{
 			$('#register-error').show()
 			$('#register-error').html("There was an error.  Try again!")
