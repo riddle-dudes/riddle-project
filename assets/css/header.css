@@ -1,0 +1,22 @@
+body
+{
+	color:#5c0087;
+}
+
+#header
+{
+	background-color: #5c0087;
+	color:white;
+	padding:10px;
+
+/* 	background: #9b54bf; Old browsers
+background: -moz-radial-gradient(center, ellipse cover, #9b54bf 1%, #5c0087 99%); FF3.6-15
+background: -webkit-radial-gradient(center, ellipse cover, #9b54bf 1%,#5c0087 99%); Chrome10-25,Safari5.1-6
+background: radial-gradient(ellipse at center, #9b54bf 1%,#5c0087 99%); W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b54bf', endColorstr='#5c0087',GradientType=1 ); IE6-9 fallback on horizontal gradient */
+}
+
+.fa-question
+{
+	
+}
