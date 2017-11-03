@@ -10,7 +10,7 @@ body
 	color: white;
 }
 
-#answer
+button
 {
 	margin-top:30px;
 	background-color: white;
@@ -19,13 +19,22 @@ body
 	border-color: #5c0087;
 	border-radius: 7px;
 	padding-left:10px;
-	width:50%;
+	width:100%;
 }
 
 #answer:hover
 {
 	box-shadow: 0px 10px 10px #5b5b5b;
 	background-color: #5c0087;
+	border:none;
+	border-color: #510077;
+	color: white;
+}
+
+#leaderboard:hover
+{
+	box-shadow: 0px 10px 10px #5b5b5b;
+	background-color: #0ccc00;
 	border:none;
 	border-color: #510077;
 	color: white;
