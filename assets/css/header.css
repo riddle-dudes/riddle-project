@@ -1,12 +1,13 @@
 body
 {
 	color:#5c0087;
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
 }
 
 #header
 {
 	/*background-color: #5c0087;*/
-    background: linear-gradient(purple, white); /* Standard syntax */
+    background: linear-gradient(#003F91, #FFFFFF); /* Standard syntax */
 	color:white;
 	padding:10px;
 
@@ -20,4 +21,5 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b54bf', end
 a
 {
 	color:white;
+	text-shadow: 4px 4px #6D326D;
 }

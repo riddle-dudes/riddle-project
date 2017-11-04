@@ -1,15 +1,11 @@
-img
-{
-	width:30%;
-}
-
 #login-error
 {
 	display: none;
 }
-body
-{
-	color:#5c0087;
+
+.block {
+	padding-right:8%;
+	padding-left:8%;
 }
 
 #register-error
@@ -25,9 +21,12 @@ body
 	border: 1px solid #5c0087;
 	border-color: #5c0087;
 	border-radius: 7px;
-	padding-left:10px;
-	width:100%;
+	padding:10px; 
+	width: 50%;
 	height:300%;
+	display: block;
+    margin-left: auto;
+    margin-right: auto
 }
 
 .purple:hover
@@ -49,8 +48,9 @@ body
 
 body
 {
-	color:#5c0087;
-
+	color:#6D326D;
+	background-color: #FFFFFF;
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
 }
 
 .jumbotron
@@ -119,3 +119,7 @@ a:hover
 	color:white;
 }
 
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-1 {width: 8.33%;}
+}
