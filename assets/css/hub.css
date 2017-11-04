@@ -67,3 +67,87 @@ a:hover
 {
 	color:white;
 }
+
+#percent-container
+{
+	background-color:white;
+	border-radius: 7px;
+	color:#5c0087;
+	padding:10px;
+}body
+{
+	color:#5c0087;
+}
+
+.jumbotron
+{
+	background: #5c0087;
+	box-shadow: 0px 10px 10px rgb(0, 0, 0, 1);
+	color: white;
+}
+
+button
+{
+	margin-top:30px;
+	background-color: white;
+	color:#5c0087; 
+	border: 1px solid #5c0087;
+	border-color: #5c0087;
+	border-radius: 7px;
+	padding-left:10px;
+	width:100%;
+}
+
+#answer:hover
+{
+	background-color: #5c0087;
+	border:none;
+	border-color: #510077;
+	color: white;
+}
+
+#leaderboard:hover
+{
+	background-color: #0ccc00;
+	border:none;
+	border-color: #510077;
+	color: white;
+}
+
+p
+{
+	font-size: 20px;
+}
+
+#correct
+{
+	display: none;
+}
+
+#wrong
+{
+	display: none;
+}
+
+#submit-answer
+{
+	border-color: #5c0087;
+}
+
+a
+{
+	color:white;
+}
+
+a:hover
+{
+	color:white;
+}
+
+#percent-container
+{
+	background-color:white;
+	border-radius: 7px;
+	color:#5c0087;
+	padding:10px;
+}
