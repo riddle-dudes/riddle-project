@@ -5,7 +5,7 @@ var freeze = false
 
 var correctDisplay = function()
 {
-	$('.jumbotron').css("background", "green")
+	$('.jumbotron').css("background", "#0ccc00")
 }
 
 var wrongDisplay = function()

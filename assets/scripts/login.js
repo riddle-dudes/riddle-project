@@ -45,7 +45,7 @@ $('#register').on("submit", function(event)
 		else
 		{
 			sessionStorage.setItem("token", result.token);
-			//window.location = '/hublogin'
+			window.location = '/hublogin'
 		}
 	})
 })
@@ -82,12 +82,6 @@ $('#login').on("submit", function(event)
 		else
 		{
 			sessionStorage.setItem("token", result);
-/*			$.ajax(
-			{
-				url: "/hublogin",
-				tyle: "get"
-			})*/
-
 			window.location = '/hublogin'
 		}
 	})
