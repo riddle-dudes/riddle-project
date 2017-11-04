@@ -25,6 +25,27 @@ router.get("/", function(req, res)
 	res.render("index");
 });
 
+router.get("/leaderboard", function(req, res)
+{
+	res.render("leaderboard")
+})
+
+router.get("/leaderboard/populate", function(req, res)
+{
+	usersModel.populateTable(function(result)
+	{
+		var users = []
+
+		for (var i=0; i<result.length; i++)
+		{
+			var user = result[i]
+			user.rank = i+1
+			users.push(user)
+		}
+		res.send(users)
+	});
+})
+
 router.get("/hub/:token?", function(req, res) {
 	var chosen = req.params.token;
 	if (chosen) {
@@ -75,12 +96,12 @@ router.post('/register', function(req, res)
 
 		else if (!validator.isEmail(req.body.email))
 		{
-			res.send({result: "invalidEmail"})
+			res.send("invalidEmail")
 		}
 
 		else
 		{
-			res.send({result: "tryAgain"})
+			res.send("tryAgain")
 		}
 	});
 

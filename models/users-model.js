@@ -56,6 +56,14 @@ var user =
 		{
 			cb(result)
 		})
+	},
+
+	populateTable: function(cb)
+	{
+		orm.populateTable(function(result)
+		{
+			cb(result)
+		})
 	}
 };
 

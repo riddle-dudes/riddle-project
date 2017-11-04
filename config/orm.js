@@ -92,6 +92,15 @@ var orm =
 			cb(result);
 		});
 	},
+
+	populateTable: function(cb)
+	{
+		connection.query("SELECT name, level, coins, token FROM users ORDER BY coins DESC", function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	}
 };
 
 module.exports = orm;

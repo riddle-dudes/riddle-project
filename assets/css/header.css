@@ -16,7 +16,7 @@ background: radial-gradient(ellipse at center, #9b54bf 1%,#5c0087 99%); W3C, IE1
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b54bf', endColorstr='#5c0087',GradientType=1 ); IE6-9 fallback on horizontal gradient */
 }
 
-.fa-question
+a
 {
-	
+	color:white;
 }

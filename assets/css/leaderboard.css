@@ -1,0 +1,54 @@
+body
+{
+	color:#5c0087;
+	font-size:20px;
+}
+
+a
+{
+	color:white;
+}
+
+a:hover
+{
+	color:white;
+}
+
+table
+{
+	margin-top: 20px;
+}
+
+.table, .table >thead, .table>thead>tr>td
+{
+	border: 3px solid #5c0087;
+}
+
+.table
+{
+	border: 3px solid #5c0087;
+}
+
+.table>thead>tr
+{
+	background-color: #5c0087;
+	color:white;
+}
+
+
+.table>tbody>tr>td
+{
+	border: 1px solid #5c0087;
+}
+
+.table>tbody>tr:hover
+{
+	background-color: #5c0087;
+	color:white;
+}
+
+.you
+{
+	background-color: #0ccc00;
+	color:white;
+}

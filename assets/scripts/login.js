@@ -35,10 +35,17 @@ $('#register').on("submit", function(event)
 			$('#register-error').html("There was an error.  Try again!")
 		}
 
+		else if (result === "invalidEmail")
+		{
+			console.log("HI!")
+			$('#register-error').show()
+			$('#register-error').html("We don't recognize this as an email.")
+		}
+
 		else
 		{
 			sessionStorage.setItem("token", result.token);
-			window.location = '/hublogin'
+			//window.location = '/hublogin'
 		}
 	})
 })
