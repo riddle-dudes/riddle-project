@@ -1,0 +1,27 @@
+{
+  "name": "riddle-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riddle-dudes/riddle-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/riddle-dudes/riddle-project/issues"
+  },
+  "homepage": "https://github.com/riddle-dudes/riddle-project#readme",
+  "dependencies": {
+    "aes-js": "^3.1.0",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "mysql": "^2.15.0",
+    "validator": "^9.1.1"
+  }
+}
