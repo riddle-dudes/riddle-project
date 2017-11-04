@@ -5,7 +5,8 @@ body
 
 #header
 {
-	background-color: #5c0087;
+	/*background-color: #5c0087;*/
+    background: linear-gradient(purple, white); /* Standard syntax */
 	color:white;
 	padding:10px;
 

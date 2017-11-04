@@ -1,5 +1,7 @@
 INSERT INTO riddles(text, answer, level) VALUES
-("Test Riddle. Answer is dog. Level 1", "dog", 1),
+("If a man carried my burden he would break his back.
+I am not big but leave silver in my tracks.
+What am I? Level 1", "snail", 1),
 ("Test Riddle. Answer is cat. Level 2", "cat", 2),
 ("Test Riddle. Answer is mouse. Level 3", "mouse", 3),
 ("Test Riddle. Answer is lard. Level 1", "lard", 1),
