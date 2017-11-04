@@ -17,7 +17,7 @@ $.ajax(
 			var td1 = $('<td>'+result[i].rank+'</td>')
 			var td2 = $('<td>'+result[i].name+'</td>')
 			var td3 = $('<td>'+result[i].level+'</td>')
-			var td4 = $('<td><i class="fa fa-usd" aria-hidden="true"> '+result[i].coins+'</i></td>')			
+			var td4 = $('<td><i class="fa fa-usd" aria-hidden="true"></i> '+result[i].coins+'</td>')			
 		}
 
 		else
@@ -26,7 +26,7 @@ $.ajax(
 			var td1 = $('<td>'+result[i].rank+'</td>')
 			var td2 = $('<td>'+result[i].name+'</td>')
 			var td3 = $('<td>'+result[i].level+'</td>')
-			var td4 = $('<td><i class="fa fa-usd" aria-hidden="true"> '+result[i].coins+'</i></td>')			
+			var td4 = $('<td><i class="fa fa-usd" aria-hidden="true"></i> '+result[i].coins+'</td>')			
 		}
 
 		tr.append(td1)
