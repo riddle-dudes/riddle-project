@@ -166,6 +166,7 @@ router.post("/getinfo", function(req, res)
 			var r = Math.floor(Math.random() * (result.length))
 			riddle = result[r].text
 			riddleId = result[r].id
+			var percent = result[r].correct/(result[r].correct + result[r].wrong)*100
 			console.log(riddle)
 			console.log(riddleId)
 			
@@ -176,7 +177,8 @@ router.post("/getinfo", function(req, res)
 				coins: coins,
 				level: level,
 				riddle: riddle,
-				riddleId: riddleId
+				riddleId: riddleId,
+				percent: percent
 			}
 
 			res.send(data)
@@ -200,6 +202,7 @@ router.post("/submit", function(req, res)
 				coins = user[0].coins + 100*Math.pow(2, user[0].level-1)/5;
 				correct = true;
 				riddlesModel.addRiddleCorrect(user[0].id, req.body.riddleId, function(result){})
+				riddlesModel.updateRiddlePercent(req.body.riddleId, "correct", function(result){})
 
 				if (coins >= 100*Math.pow(2, user[0].level))
 				{
@@ -210,6 +213,7 @@ router.post("/submit", function(req, res)
 			else
 			{
 				coins = user[0].coins - 100*Math.pow(2, user[0].level-1)/5;
+				riddlesModel.updateRiddlePercent(req.body.riddleId, "wrong", function(result){})
 
 				if (coins < 100*Math.pow(2, user[0].level-1) && user[0].level>1)
 				{

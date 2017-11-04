@@ -24,6 +24,14 @@ var riddle =
 		{
 			cb(result)
 		})
+	},
+
+	updateRiddlePercent: function(id, column, cb)
+	{
+		orm.updateRiddlePercent(id, column, function(result)
+		{
+			cb(result)
+		})
 	}
 };
 

@@ -31,6 +31,16 @@ $.ajax(
 	$('#coins').html(result.coins)
 	$('#level').html(result.level)
 	$('#riddle').html(result.riddle)
+
+	if (result.percent === null)
+	{
+		$('#percent-container').html("<h5>You're the first to try this riddle!</h5>")
+	}
+
+	else
+	{
+		$('#percent').html(result.percent+"%")
+	}
 })
 
 

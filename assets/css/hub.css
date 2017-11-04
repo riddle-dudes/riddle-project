@@ -67,3 +67,11 @@ a:hover
 {
 	color:white;
 }
+
+#percent-container
+{
+	background-color:white;
+	border-radius: 7px;
+	color:#5c0087;
+	padding:10px;
+}
