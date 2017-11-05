@@ -30,4 +30,10 @@ user INT(50) not null,
 riddle INT(50) not null
 );
 
-select * from users;
+CREATE TABLE attack(
+id INT(50) auto_increment not null,
+attacker INT(50),
+defender INT(50),
+time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+primary key(id)
+)

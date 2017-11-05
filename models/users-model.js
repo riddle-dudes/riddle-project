@@ -64,6 +64,14 @@ var user =
 		{
 			cb(result)
 		})
+	},
+
+	attacking: function(id, attackBoolean, cb)
+	{
+		orm.attacking(id, attackBoolean, function(result)
+		{
+			cb(result)
+		})
 	}
 };
 

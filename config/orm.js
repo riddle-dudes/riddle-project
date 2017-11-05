@@ -95,7 +95,7 @@ var orm =
 
 	populateTable: function(cb)
 	{
-		connection.query("SELECT name, level, coins, token FROM users ORDER BY coins DESC", function(err, result)
+		connection.query("SELECT id, name, level, coins, token, attacking FROM users ORDER BY coins DESC", function(err, result)
 		{
 			if(err){throw err}
 			cb(result)
@@ -105,6 +105,24 @@ var orm =
 	updateRiddlePercent: function(id, column, cb)
 	{
 		connection.query("UPDATE riddles SET "+column+" = "+column+" + 1 WHERE id = ?;", [id], function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	},
+
+	attack: function(attackerId, defenderId, cb)
+	{
+		connection.query("INSERT INTO attack(attacker, defender) VALUES (?, ?);", [attackerId, defenderId], function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	},
+
+	attacking: function(id, attackBoolean, cb)
+	{
+		connection.query("UPDATE users SET attacking = ? WHERE id = ?;", [attackBoolean, id], function(err, result)
 		{
 			if(err){throw err}
 			cb(result)

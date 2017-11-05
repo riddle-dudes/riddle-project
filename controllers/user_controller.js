@@ -1,6 +1,7 @@
 var express = require('express');
 var usersModel = require('../models/users-model.js');
 var riddlesModel = require('../models/riddles-model.js');
+var attackModel = require('../models/attack-model.js');
 var aesjs = require('aes-js');
 var validator = require('validator');
 
@@ -226,6 +227,16 @@ router.post("/submit", function(req, res)
 				res.send(correct)
 			})
 		})
+	})
+})
+
+router.post("/attack", function(req, res)
+{
+	console.log(req.body)
+	attackModel.attack(req.body.attackerId, req.body.defenderId, function(result)
+	{
+		usersModel.attacking(req.body.attackerId, true, function(result){})
+		res.send("Attacking!")
 	})
 })
 
