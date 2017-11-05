@@ -27,5 +27,3 @@ CREATE TABLE riddles_correct(
 user INT(50) not null,
 riddle INT(50) not null
 );
-
-select * from users;
