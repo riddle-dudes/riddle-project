@@ -12,6 +12,7 @@ password VARCHAR(255) not null,
 token VARCHAR(255), -- put token in session storage in browser --
 level INT(50) not null,
 coins INT(50) not null,
+attacking BOOLEAN DEFAULT false,
 primary key(id)
 );
 

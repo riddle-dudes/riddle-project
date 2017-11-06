@@ -127,6 +127,24 @@ var orm =
 			if(err){throw err}
 			cb(result)
 		})
+	},
+
+	getTimes: function(cb)
+	{
+		connection.query("SELECT time FROM attack", function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	},
+
+	getCoins: function(id1, id2, cb)
+	{
+		connection.query("SELECT coins FROM users WHERE id in (?,?);", [id1, id2], function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
 	}
 };
 
