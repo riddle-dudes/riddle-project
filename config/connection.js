@@ -13,7 +13,7 @@ connection = mysql.createConnection(
 	port: 3306,
 
 	user: 'root',
-	password: 'Le0nard0DaV!nc1',
+	password: 'Lukkehoday1',
 	database: "game"
 });
 
