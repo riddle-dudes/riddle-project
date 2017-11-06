@@ -4,13 +4,6 @@ body
 	font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
 }
 
-.jumbotron
-{
-	background: #5c0087;
-	box-shadow: 0px 10px 10px rgb(0, 0, 0, 1);
-	color: white;
-}
-
 button
 {
 	margin-top:30px;
@@ -82,7 +75,7 @@ a:hover
 
 .jumbotron
 {
-	background: #5c0087;
+	background-color: #003F91;
 	box-shadow: 0px 10px 10px rgb(0, 0, 0, 1);
 	color: white;
 }
@@ -92,27 +85,43 @@ button
 	margin-top:30px;
 	background-color: white;
 	color:#5c0087; 
-	border: 1px solid #5c0087;
-	border-color: #5c0087;
-	border-radius: 7px;
+	border: none;
+	border-outline: none;
+	border-radius: 20px;
 	padding-left:10px;
 	width:100%;
+	font-size:16px;
+	cursor:pointer;
+
+}
+
+#submit-answer input[type="text"]
+{
+	border: none;
+	border-bottom: 1px solid white;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: white;
+	font-size:16px;
+	border-radius:0px;
+	border-color: white;
 }
 
 #answer:hover
 {
-	background-color: #5c0087;
+	background-color:white;
 	border:none;
 	border-color: #510077;
-	color: white;
+	color: green;
 }
 
 #leaderboard:hover
 {
-	background-color: #0ccc00;
+	background-color: white;
 	border:none;
 	border-color: #510077;
-	color: white;
+	color: green;
 }
 
 p
