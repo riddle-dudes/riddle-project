@@ -310,7 +310,12 @@ What am I?", "clock", 3),
 I can stay put or I can travel far.
 
 What am I?", 'computer', 1),
-("We have what we did not find; what we did find we left behind.", 'lice', 2);
+("We have what we did not find; what we did find we left behind.", 'lice', 2),
+("I never was. Am always to be. No one ever saw me, nor ever will. And yet I am the confidence of all who live and breathe. What am I ?", 'tomorrow', 5),
+("Whats 3/7 chicken, 2/3 cat, and 2/4 goat?", 'chicago', 2),
+("I weaken all men for hours each day. I show you strange visions while you are away. I take you by night, by day take you back, None suffer to have me, but do from my lack. What am I?", 'sleep', 2),
+("I'm simple for a few people But hard for them to hear I live inside of secrets I bring people's worst fears What am I?", 'truth', 4),
+("What is easy to get into, but hard to get out of?", 'trouble', 1);
 
 select * from riddles;
 
