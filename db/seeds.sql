@@ -235,7 +235,82 @@ It is the son of water, but if water touches it, it dies.", 'salt', 5),
 ("Physicists have built devices to make me move quickly. My last eight letters can be commonly found in newspapers, magazines, and journals.
 
 What am I?", 'particles', 2),
-("What eight letter word has kst inside, in the beginning, and at the end?", "inkstand", 4);
+("What eight letter word has kst inside, in the beginning, and at the end?", "inkstand", 4),
+("When you need me, you throw me away. But when you're done with me, you bring me back.
+
+What am I?", 'anchor', 4),
+("Many have heard me, but nobody has seen me, and I will not speak back until spoken to.
+What am I?", 'echo', 2),
+("I fly, yet I have no wings. I cry, yet I have no eyes. Darkness follows me; lower light I never see.
+
+What am I?", "cloud", 3),
+("You struggle to regain me.
+When I'm lost, you struggle to obtain me.
+I pass no matter your will,
+but I'm your slave to kill.
+What am I?", "time", 4),
+("Feathers, I am as light,
+But quite heavy if squeezed tight.
+I'm seen as clean and pure,
+but often talked about with dirty terms.
+What am I?", "snow", 2),
+("It dances and skips,
+it's read in the eyes but it cheats with the hips,
+If it meets its match it's easily caught,
+but it's worth nothing if it is bought.
+What is it?", "heart", 3),
+("The more places I be, the less you can see.
+
+What am I?", 'darkness', 1),
+("I can be used to build castles,
+but I crumble in your hands.
+I can help a man see,
+and am found all around the lands.", 'sand', 1),
+("I can bring tears to your eyes; resurrect the dead, make you smile, and reverse time. I form in an instant but I last a life time. What am I?", 'memory', 5),
+("Skinny I am fast,
+fat I am slow,
+but I'll still delight you from your eyes to your nose.
+
+What am I?", 'candle', 1),
+("I'll bring out your bulls,
+and slow your roll.
+I may even come out of your skull.
+
+What am I?", 'red', 1),
+("It brings light to a dark dark world,
+In a current it travels and through tunnels it's hurled.
+Touch it and it'll kill you.
+
+What is it?", 'electricity', 4),
+("You put me in hard.
+But then I become soft.
+Blow me hard and I will get bigger.
+
+What am I?", 'gum', 2),
+("No matter how hard you try,
+I can open what you can't.
+If it wasn't for me,
+on your front porch you would stand.
+
+What am I?", 'key', 1),
+("You put me in dry but then I get wet.
+The longer I stay in, the stronger it will get.
+
+What am I?", 'teabag', 2),
+("I have lakes with no fish.
+I have roads with no cars.
+
+What am I?", 'map', 1),
+("I can be sun,
+I can be sand,
+and I can be bird.
+
+What am I?", "clock", 3),
+("I used to fill rooms but now I'm a tower,
+I can stay put or I can travel far.
+
+What am I?", 'computer', 1),
+("We have what we did not find; what we did find we left behind.", 'lice', 2);
 
 select * from riddles;
 
