@@ -10,6 +10,14 @@ var user =
 		});
 	},
 
+	findFromId: function(id, cb)
+	{
+		orm.findFromId("users", id, function(result)
+		{
+			cb(result);
+		})
+	},
+
 	getEmail: function(email, cb)
 	{
 		orm.selectEmail(email, function(result)
@@ -69,6 +77,14 @@ var user =
 	attacking: function(id, attackBoolean, cb)
 	{
 		orm.attacking(id, attackBoolean, function(result)
+		{
+			cb(result)
+		})
+	},
+
+	updateCoinsFromAttack: function(id1, id2, coins1, coins2, cb)
+	{
+		orm.updateCoinsFromAttack(id1, id2, coins1, coins2, function(result)
 		{
 			cb(result)
 		})

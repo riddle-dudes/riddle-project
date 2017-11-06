@@ -131,16 +131,43 @@ var orm =
 
 	getTimes: function(cb)
 	{
-		connection.query("SELECT time FROM attack", function(err, result)
+		connection.query("SELECT id, time FROM attack", function(err, result)
 		{
 			if(err){throw err}
 			cb(result)
 		})
 	},
 
-	getCoins: function(id1, id2, cb)
+	getAttacker: function(id, cb)
 	{
-		connection.query("SELECT coins FROM users WHERE id in (?,?);", [id1, id2], function(err, result)
+		connection.query("SELECT attacker FROM attack WHERE id in (?);", [id], function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	},
+
+	getDefender: function(id, cb)
+	{
+		connection.query("SELECT defender FROM attack WHERE id = ?;", [id], function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	},
+
+	updateCoinsFromAttack: function(id1, id2, coins1, coins2, cb)
+	{
+		connection.query("UPDATE users SET coins = CASE id WHEN "+id1+" THEN "+coins1+" WHEN "+id2+" THEN "+coins2+" END WHERE id IN ("+id1+", "+id2+");", function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	},
+
+	deleteAttack: function(id, cb)
+	{
+		connection.query("DELETE FROM attack WHERE id = ?;", [id], function(err, result)
 		{
 			if(err){throw err}
 			cb(result)

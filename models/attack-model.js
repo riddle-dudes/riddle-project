@@ -18,9 +18,25 @@ var attack =
 		})
 	},
 
-	getCoins: function(id1, id2, cb)
+	getAttacker: function(id, cb)
 	{
-		orm.getCoins(id1, id2, function(result)
+		orm.getAttacker(id, function(result)
+		{
+			cb(result)
+		})
+	},
+
+	getDefender: function(id, cb)
+	{
+		orm.getDefender(id, function(result)
+		{
+			cb(result)
+		})
+	},
+
+	deleteAttack: function(id, cb)
+	{
+		orm.deleteAttack(id, function(result)
 		{
 			cb(result)
 		})
