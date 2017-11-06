@@ -1,14 +1,15 @@
 body
 {
 	color:#5c0087;
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
 }
 
 #header
 {
-	background-color: #5c0087;
+	/*background-color: #5c0087;*/
+    background: linear-gradient(#003F91, #FFFFFF); /* Standard syntax */
 	color:white;
 	padding:10px;
-
 /* 	background: #9b54bf; Old browsers
 background: -moz-radial-gradient(center, ellipse cover, #9b54bf 1%, #5c0087 99%); FF3.6-15
 background: -webkit-radial-gradient(center, ellipse cover, #9b54bf 1%,#5c0087 99%); Chrome10-25,Safari5.1-6
@@ -16,7 +17,8 @@ background: radial-gradient(ellipse at center, #9b54bf 1%,#5c0087 99%); W3C, IE1
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9b54bf', endColorstr='#5c0087',GradientType=1 ); IE6-9 fallback on horizontal gradient */
 }
 
-a
+.question-mark
 {
 	color:white;
+	text-shadow: 4px 4px #6D326D;
 }

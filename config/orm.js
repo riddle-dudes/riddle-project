@@ -77,7 +77,7 @@ var orm =
 
 	getRiddlesWithLevelNotSeen: function(table, userId, level, cb)
 	{
-		connection.query('select riddles.id, riddles.text from riddles where level=? and riddles.id not in (select riddle from riddles_correct where ? = riddles_correct.user);', [level, userId], function(err, result)
+		connection.query('select riddles.id, riddles.text, riddles.correct, riddles.wrong from riddles where level=? and riddles.id not in (select riddle from riddles_correct where ? = riddles_correct.user);', [level, userId], function(err, result)
 		{
 			if(err){throw err}
 			cb(result)
@@ -96,6 +96,15 @@ var orm =
 	populateTable: function(cb)
 	{
 		connection.query("SELECT name, level, coins, token FROM users ORDER BY coins DESC", function(err, result)
+		{
+			if(err){throw err}
+			cb(result)
+		})
+	},
+
+	updateRiddlePercent: function(id, column, cb)
+	{
+		connection.query("UPDATE riddles SET "+column+" = "+column+" + 1 WHERE id = ?;", [id], function(err, result)
 		{
 			if(err){throw err}
 			cb(result)

@@ -1,13 +1,7 @@
 body
 {
 	color:#5c0087;
-}
-
-.jumbotron
-{
-	background: #5c0087;
-	box-shadow: 0px 10px 10px rgb(0, 0, 0, 1);
-	color: white;
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
 }
 
 button
@@ -66,4 +60,104 @@ a
 a:hover
 {
 	color:white;
+}
+
+#percent-container
+{
+	background-color:white;
+	border-radius: 7px;
+	color:#5c0087;
+	padding:10px;
+}body
+{
+	color:#5c0087;
+}
+
+.jumbotron
+{
+	background-color: #003F91;
+	box-shadow: 0px 10px 10px rgb(0, 0, 0, 1);
+	color: white;
+}
+
+button
+{
+	margin-top:30px;
+	background-color: white;
+	color:#5c0087; 
+	border: none;
+	border-outline: none;
+	border-radius: 20px;
+	padding-left:10px;
+	width:100%;
+	font-size:16px;
+	cursor:pointer;
+
+}
+
+#submit-answer input[type="text"]
+{
+	border: none;
+	border-bottom: 1px solid white;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: white;
+	font-size:16px;
+	border-radius:0px;
+	border-color: white;
+}
+
+#answer:hover
+{
+	background-color:white;
+	border:none;
+	border-color: #510077;
+	color: green;
+}
+
+#leaderboard:hover
+{
+	background-color: white;
+	border:none;
+	border-color: #510077;
+	color: green;
+}
+
+p
+{
+	font-size: 20px;
+}
+
+#correct
+{
+	display: none;
+}
+
+#wrong
+{
+	display: none;
+}
+
+#submit-answer
+{
+	border-color: #5c0087;
+}
+
+a
+{
+	color:white;
+}
+
+a:hover
+{
+	color:white;
+}
+
+#percent-container
+{
+	background-color: white;
+	border-radius: 7px;
+	color:#5c0087;
+	padding:10px;
 }

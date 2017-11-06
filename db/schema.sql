@@ -20,6 +20,8 @@ id INT(50) auto_increment not null,
 text VARCHAR(1255) not null,
 answer VARCHAR(255) not null,
 level INT(50) not null,
+correct INT(50) not null,
+wrong INT(50) not null,
 primary key(id)
 );
 

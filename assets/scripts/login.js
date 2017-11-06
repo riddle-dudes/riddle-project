@@ -1,3 +1,7 @@
+$('#new-user').on("click", function(event) {
+	$('#login-block').hide()
+});
+
 $('#register').on("submit", function(event)
 {
 	$('#login-error').hide()
