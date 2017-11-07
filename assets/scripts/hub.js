@@ -25,6 +25,7 @@ $.ajax(
 	data: data
 }).then(function(result)
 {
+	console.log(result)
 	if (result.length === 0)
 	{
 		window.location = "/login"
