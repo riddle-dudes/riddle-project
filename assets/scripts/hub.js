@@ -33,6 +33,7 @@ else
 		data: data
 	}).then(function(result)
 	{
+		var percent = Math.round(result.percent)
 		riddleId = result.riddleId
 		$('#name').html(result.name)
 		$('#coins').html(result.coins)
@@ -46,7 +47,7 @@ else
 
 		else
 		{
-			$('#percent').html(result.percent+"%")
+			$('#percent').html(percent+"%")
 		}
 
 	})
