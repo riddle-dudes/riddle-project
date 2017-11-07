@@ -1,10 +1,6 @@
 var riddleId = 0;
 var token = sessionStorage.getItem("token")
 
-if (token === null)
-{
-	window.location = "/login"
-}
 console.log(token)
 var freeze = false
 
@@ -23,31 +19,39 @@ var data =
 	token: token
 }
 
-$.ajax(
+if (token === null)
 {
-	url: '/getinfo',
-	type: 'post',
-	data: data
-}).then(function(result)
+	window.location = "/"
+}
+
+else
 {
-
-	console.log(result)
-	riddleId = result.riddleId
-	$('#name').html(result.name)
-	$('#coins').html(result.coins)
-	$('#level').html(result.level)
-	$('#riddle').html(result.riddle)
-
-	if (result.percent === null)
+	$.ajax(
 	{
-		$('#percent-container').html("<h5>You're the first to try this riddle!</h5>")
-	}
-
-	else
+		url: '/getinfo',
+		type: 'post',
+		data: data
+	}).then(function(result)
 	{
-		$('#percent').html(result.percent+"%")
-	}
-})
+		riddleId = result.riddleId
+		$('#name').html(result.name)
+		$('#coins').html(result.coins)
+		$('#level').html(result.level)
+		$('#riddle').html(result.riddle)
+
+		if (result.percent === null)
+		{
+			$('#percent-container').html("<h5>You're the first to try this riddle!</h5>")
+		}
+
+		else
+		{
+			$('#percent').html(result.percent+"%")
+		}
+
+	})
+}
+
 
 
 $("#answer").on("click", function(event)
