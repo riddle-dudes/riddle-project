@@ -156,33 +156,64 @@ router.post("/getinfo", function(req, res)
 
 	usersModel.findFromToken(req.body.token, function(user)
 	{
-		coins = user[0].coins;
-		level = user[0].level;
-		name = user[0].name;
+		console.log("Hey!")
 
-		riddlesModel.getRiddlesWithLevelNotSeen(user[0].id, level, function(result)
+		if (user[0] === undefined)
 		{
-			console.log(result)
-			var r = Math.floor(Math.random() * (result.length))
-			riddle = result[r].text
-			riddleId = result[r].id
-			var percent = result[r].correct/(result[r].correct + result[r].wrong)*100
-			console.log(riddle)
-			console.log(riddleId)
-			
-			//Send this object back to the user
-			var data = 
-			{
-				name: name,
-				coins: coins,
-				level: level,
-				riddle: riddle,
-				riddleId: riddleId,
-				percent: percent
-			}
+			console.log("SDFSDGDFGDFGDFG!")
+			res.send("nouser");
+			console.log("SDFSDGDFGDFGDFG!")
+			return;
+		}
 
-			res.send(data)
-		})
+		else
+		{
+			coins = user[0].coins;
+			level = user[0].level;
+			name = user[0].name;
+
+			riddlesModel.getRiddlesWithLevelNotSeen(user[0].id, level, function(result)
+			{
+				console.log(result)
+
+				if (result[0] === undefined)
+				{
+					var data = 
+					{
+						name: name,
+						coins: coins,
+						level: level,
+						riddle: "noriddles",
+						percent: percent
+					}
+					
+					res.send(data)
+				}
+
+				else
+				{
+					var r = Math.floor(Math.random() * (result.length))
+					riddle = result[r].text
+					riddleId = result[r].id
+					var percent = result[r].correct/(result[r].correct + result[r].wrong)*100
+					console.log(riddle)
+					console.log(riddleId)
+					
+					//Send this object back to the user
+					var data = 
+					{
+						name: name,
+						coins: coins,
+						level: level,
+						riddle: riddle,
+						riddleId: riddleId,
+						percent: percent
+					}
+
+					res.send(data)
+				}
+			})
+		}
 	})
 })
 

@@ -33,21 +33,38 @@ else
 		data: data
 	}).then(function(result)
 	{
-		var percent = Math.round(result.percent)
-		riddleId = result.riddleId
-		$('#name').html(result.name)
-		$('#coins').html(result.coins)
-		$('#level').html(result.level)
-		$('#riddle').html(result.riddle)
-
-		if (result.percent === null)
+		if (result === "nouser")
 		{
-			$('#percent-container').html("<h5>You're the first to try this riddle!</h5>")
+			window.location="/"
+		}
+
+		else if (result.riddle === "noriddles")
+		{
+			$('#riddle').html("Oh no!  We're out of riddles for you!")
+			$('#name').html(result.name)
+			$('#coins').html(result.coins)
+			$('#level').html(result.level)
+			$('#answer').hide()
 		}
 
 		else
 		{
-			$('#percent').html(percent+"%")
+			var percent = Math.round(result.percent)
+			riddleId = result.riddleId
+			$('#name').html(result.name)
+			$('#coins').html(result.coins)
+			$('#level').html(result.level)
+			$('#riddle').html(result.riddle)
+
+			if (result.percent === null)
+			{
+				$('#percent-container').html("<h5>You're the first to try this riddle!</h5>")
+			}
+
+			else
+			{
+				$('#percent').html(percent+"%")
+			}
 		}
 
 	})
