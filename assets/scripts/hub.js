@@ -25,21 +25,29 @@ $.ajax(
 	data: data
 }).then(function(result)
 {
-	console.log(result)
-	riddleId = result.riddleId
-	$('#name').html(result.name)
-	$('#coins').html(result.coins)
-	$('#level').html(result.level)
-	$('#riddle').html(result.riddle)
-
-	if (result.percent === null)
+	if (result.length === 0)
 	{
-		$('#percent-container').html("<h5>You're the first to try this riddle!</h5>")
+		window.location = "/login"
 	}
 
 	else
 	{
-		$('#percent').html(result.percent+"%")
+		console.log(result)
+		riddleId = result.riddleId
+		$('#name').html(result.name)
+		$('#coins').html(result.coins)
+		$('#level').html(result.level)
+		$('#riddle').html(result.riddle)
+
+		if (result.percent === null)
+		{
+			$('#percent-container').html("<h5>You're the first to try this riddle!</h5>")
+		}
+
+		else
+		{
+			$('#percent').html(result.percent+"%")
+		}
 	}
 })
 
