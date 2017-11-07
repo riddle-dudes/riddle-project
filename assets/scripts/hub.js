@@ -1,5 +1,10 @@
 var riddleId = 0;
 var token = sessionStorage.getItem("token")
+
+if (token === null)
+{
+	window.location = "/login"
+}
 console.log(token)
 var freeze = false
 
@@ -25,29 +30,22 @@ $.ajax(
 	data: data
 }).then(function(result)
 {
-	if (result.length === null)
+
+	console.log(result)
+	riddleId = result.riddleId
+	$('#name').html(result.name)
+	$('#coins').html(result.coins)
+	$('#level').html(result.level)
+	$('#riddle').html(result.riddle)
+
+	if (result.percent === null)
 	{
-		window.location = "/login"
+		$('#percent-container').html("<h5>You're the first to try this riddle!</h5>")
 	}
 
 	else
 	{
-		console.log(result)
-		riddleId = result.riddleId
-		$('#name').html(result.name)
-		$('#coins').html(result.coins)
-		$('#level').html(result.level)
-		$('#riddle').html(result.riddle)
-
-		if (result.percent === null)
-		{
-			$('#percent-container').html("<h5>You're the first to try this riddle!</h5>")
-		}
-
-		else
-		{
-			$('#percent').html(result.percent+"%")
-		}
+		$('#percent').html(result.percent+"%")
 	}
 })
 
