@@ -23,8 +23,8 @@ id | name | email | password | token | level | coins
 ------------ | ------------- |------------ | ------------- | ------------ | ------------- | -------------
 int(50) AI PK | varchar(255) | varchar(255) | varchar(255) | varchar(255 | int(50) | int(50)
 
-### bamazon.departments
+### game.riddles
 
-department_id | department_name | over_head_costs
------------- | ------------- |------------
-int(20) AI PK | varchar(50) | decimal(50, 2) 
+id | text | answer | level | correct | wrong 
+------------ | ------------- |------------ | ------------- | ------------ | -------------
+int(50) AI PK | varchar(1255) | varchar(255) | int(50)  | int(50) | int(50)
