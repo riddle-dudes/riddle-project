@@ -21,7 +21,7 @@ The MySQL Database is called game.  It includes three tables.
 
 id | name | email | password | token | level | coins 
 ------------ | ------------- |------------ | ------------- | ------------ | ------------- | -------------
-int(50) AI PK | varchar(255) | varchar(255) | varchar(255) | varchar(255 | int(50) | int(50)
+int(50) AI PK | varchar(255) | varchar(255) | varchar(255) | varchar(255) | int(50) | int(50)
 
 ### game.riddles - Table which holds riddle information
 
