@@ -17,14 +17,23 @@ A fun riddle based trivia game.  Users are given a riddle at random that is of t
 
 ## Database Structure
 The MySQL Database is called game.  It includes three tables.
-### game.users
+### game.users - Table which holds user information
 
 id | name | email | password | token | level | coins 
 ------------ | ------------- |------------ | ------------- | ------------ | ------------- | -------------
 int(50) AI PK | varchar(255) | varchar(255) | varchar(255) | varchar(255 | int(50) | int(50)
 
-### game.riddles
+### game.riddles - Table which holds riddle information
 
 id | text | answer | level | correct | wrong 
 ------------ | ------------- |------------ | ------------- | ------------ | -------------
 int(50) AI PK | varchar(1255) | varchar(255) | int(50)  | int(50) | int(50)
+
+### game.riddles_correct - Table which contains the riddles any user has gotten correct
+
+user | riddle 
+------------ | -------------
+int(50) | int(50)
+
+## Try your luck at riddles!
+http://riddlegame.herokuapp.com/
